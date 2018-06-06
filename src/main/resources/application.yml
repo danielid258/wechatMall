@@ -8,6 +8,8 @@ spring:
     show-sql: true
 server:
   context-path: /wechatMall
+
+#TRACE < DEBUG < INFO < WARN < ERROR < FATAL
 #logging:
 #  level:
 #    com.daniel.dao: DEBUG
