@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<configuration>
+<configuration  scan="true" scanPeriod="60 seconds" debug="true">
     <contextName>logback</contextName>
 
-    <property name="log.path" value="D:\wechatMall\log"/>
+    <property name="log.path" value="D:/wechatMall/log"/>
 
+    <!-- print to console -->
     <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>
                 <!-- %d - %msg%n -->
@@ -13,6 +18,7 @@
         </layout>
     </appender>
 
+    <!-- print info level to file -->
     <appender name="fileInfoLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <level>ERROR</level>
@@ -24,27 +30,24 @@
                 %msg%n
             </pattern>
         </encoder>
-        <!--滚动策略-->
+
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--路径-->
             <fileNamePattern>${log.path}/logback.info.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
     </appender>
 
-
+    <!-- print only error level to file -->
     <appender name="fileErrorLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
         </filter>
         <encoder>
             <pattern>
-                %msg%n
+                %d{HH:mm:ss} %msg%n
             </pattern>
         </encoder>
-        <!--滚动策略-->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!--路径-->
-            <fileNamePattern>${log.path}/logback.error.%d.log</fileNamePattern>
+            <fileNamePattern>${log.path}/logback.error.%d{yyyy-MM-dd}.log</fileNamePattern>
         </rollingPolicy>
     </appender>
 
