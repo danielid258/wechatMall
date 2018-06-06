@@ -25,6 +25,7 @@ public class ProductCategoryRepositoryTest {
         ProductCategory productCategory = productCategoryRepository.findOne(1);
         log.info(productCategory.toString());
     }
+
     @Test
     public void add() {
         ProductCategory productCategory = new ProductCategory();
@@ -33,6 +34,7 @@ public class ProductCategoryRepositoryTest {
         productCategory.setCreateTime(new Date());
         productCategoryRepository.save(productCategory);
     }
+
     @Test
     public void update() {
         ProductCategory productCategory = productCategoryRepository.findOne(1);
