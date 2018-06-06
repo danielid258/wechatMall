@@ -1,8 +1,9 @@
 package com.daniel.model;
 
+import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.Entity;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.Date;
 /**
  * on 6/6/2018.
  */
+@Data
 @Entity
 @DynamicUpdate
 public class ProductCategory {

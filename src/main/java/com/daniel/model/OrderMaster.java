@@ -12,7 +12,7 @@ import java.util.Date;
  * on 6/6/2018.
  */
 @Data
-public class Order {
+public class OrderMaster {
     /**
      *订单id
      */

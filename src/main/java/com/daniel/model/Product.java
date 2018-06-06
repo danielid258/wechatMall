@@ -14,6 +14,7 @@ import java.util.Date;
  */
 @Data
 public class Product {
+    private Integer id;
     @Id
     private String productId;
 
