@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Daniel on 2018/6/6.
@@ -41,5 +43,13 @@ public class ProductCategoryRepositoryTest {
         productCategory.setCategoryName("best");
         productCategory.setUpdateTime(new Date());
         productCategoryRepository.save(productCategory);
+    }
+
+    @Test
+    public void findByCategoryTypeIn() {
+        List<Integer> list = Arrays.asList(1, 2, 4);
+        List<ProductCategory> productCategories = productCategoryRepository.findByCategoryTypeIn(list);
+
+        productCategories.forEach(productCategory -> log.info(productCategory.toString()));
     }
 }
