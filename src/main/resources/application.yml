@@ -8,6 +8,7 @@ spring:
     show-sql: true
 server:
   context-path: /wechatMall
+  port: 8888
 
 #TRACE < DEBUG < INFO < WARN < ERROR < FATAL
 #logging:

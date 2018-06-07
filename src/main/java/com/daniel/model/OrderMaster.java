@@ -4,6 +4,7 @@ import com.daniel.enums.OrderStatusEnum;
 import com.daniel.enums.PayStatusEnum;
 import lombok.Data;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.Date;
 /**
  * on 6/6/2018.
  */
+@Entity
 @Data
 public class OrderMaster {
     /**

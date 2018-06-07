@@ -7,9 +7,11 @@ import lombok.Getter;
  */
 @Getter
 public enum ResultEnum {
-    SUCCESS(0, "成功"),
+    SUCCESS(0, "处理成功"),
 
-    PARAM_ERROR(1, "参数不正确"),
+    FAILURE(1, "处理失败"),
+
+    PARAM_ERROR(2, "请求参数错误"),
 
     PRODUCT_NOT_EXIST(10, "商品不存在"),
 

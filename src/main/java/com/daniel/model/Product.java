@@ -5,6 +5,7 @@ import com.daniel.util.EnumUtil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -12,9 +13,9 @@ import java.util.Date;
 /**
  * on 6/6/2018.
  */
+@Entity
 @Data
 public class Product {
-    private Integer id;
     @Id
     private String productId;
 
@@ -39,7 +40,7 @@ public class Product {
     private String productDescription;
 
     /**
-     *小图
+     *产品图标URL
      */
     private String productIcon;
 
@@ -47,7 +48,6 @@ public class Product {
      *状态 0正常1下架
      */
     private Integer productStatus = ProductStatusEnum.UP.getCode();
-
     /**
      *类目编号
      */
