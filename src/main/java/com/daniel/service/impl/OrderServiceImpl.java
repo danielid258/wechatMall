@@ -13,6 +13,7 @@ import com.daniel.model.Product;
 import com.daniel.repository.OrderDetailRepository;
 import com.daniel.repository.OrderRepository;
 import com.daniel.service.OrderService;
+import com.daniel.service.PaymentService;
 import com.daniel.service.ProductService;
 import com.daniel.util.KeyUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -45,8 +46,8 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    //@Autowired
-    //private PaymentService paymentService;
+    @Autowired
+    private PaymentService paymentService;
     //
     //@Autowired
     //private MessagePushService messagePushService;
@@ -132,7 +133,29 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderDTO cancel(OrderDTO orderDTO) {
-        return null;
+        if (!orderDTO.getOrderStatus().equals(OrderStatusEnum.NEW))
+            throw new SellException(ResultEnum.ORDER_STATUS_ERROR);
+
+        OrderMaster master = new OrderMaster();
+        orderDTO.setOrderStatus(OrderStatusEnum.CANCEL.getCode());
+        BeanUtils.copyProperties(orderDTO, master);
+
+        OrderMaster save = orderRepository.save(master);
+        if (save == null)
+            throw new SellException(ResultEnum.ORDER_UPDATE_FAIL);
+
+        if (CollectionUtils.isEmpty(orderDTO.getOrderDetailList()))
+            throw new SellException(ResultEnum.ORDER_DETAIL_EMPTY);
+
+        //increase stock
+        List<CartDTO> cartDTOs = orderDTO.getOrderDetailList().stream().map(orderDetail -> new CartDTO(orderDetail.getProductId(), orderDetail.getProductQuantity())).collect(Collectors.toList());
+        productService.increaseStock(cartDTOs);
+
+        //refund
+        if (orderDTO.getPayStatus().equals(PayStatusEnum.SUCCESS.getCode()))
+            paymentService.refund(orderDTO);
+
+        return orderDTO;
     }
 
     @Override
