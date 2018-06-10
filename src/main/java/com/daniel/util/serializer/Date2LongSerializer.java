@@ -10,6 +10,8 @@ import java.util.Date;
 
 /**
  * on 6/7/2018.
+ *
+ * millisecond convert to second
  */
 public class Date2LongSerializer extends JsonSerializer<Date> {
 

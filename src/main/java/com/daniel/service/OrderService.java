@@ -42,4 +42,14 @@ public interface OrderService {
      * 查询订单列表
      */
     Page<OrderDTO> findList(Pageable pageable);
+
+    /**
+     * 查询openid所属的订单
+     */
+    OrderDTO findOrderOne(String openid, String orderId);
+
+    /**
+     * 查询openid所属的订单
+     */
+    void cancelOrder(String openid, String orderId);
 }

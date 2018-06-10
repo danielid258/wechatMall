@@ -17,6 +17,7 @@ import java.util.List;
  * on 6/7/2018.
  */
 @Data
+//@JsonInclude(JsonInclude.Include.NON_NULL)        //exclude empty attributes
 public class OrderDTO {
     /**
      * 订单id
