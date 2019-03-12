@@ -1,5 +1,10 @@
+=============Windows 10 Enterprise_N 2015 LTSB 10240.16545 th1 x86-x64 EN-CN PIP=======================
+
+
+
 
 en-cn_windows_10_enterprise_2015_ltsb_n_x64_pip
+
 http://pcs.baidu.com/rest/2.0/pcs/file?method=download&app_id=265486&path=%2F%E6%88%91%E7%9A%84%E8%B5%84%E6%BA%90%2FWindows%2010%20Enterprise%202015%20LTSB%20by%20lopatkin%2FWindows%2010%20Enterprise_N%202015%20LTSB%2010240.16545%20th1%20x86-x64%20EN-CN%20PIP%2Fen-cn_windows_10_enterprise_2015_ltsb_n_x64_pip.iso
 
 
